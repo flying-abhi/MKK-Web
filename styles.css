@@ -94,6 +94,7 @@ textarea {
 .section-heading h2,
 .hero-copy h1,
 .program-card h3,
+.intelligence-card h3,
 .benefit-card h3,
 .booking-copy h2 {
   font-family: "Baloo 2", cursive;
@@ -245,7 +246,7 @@ textarea {
   overflow: hidden;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)),
-    linear-gradient(135deg, #f6ca69 0%, #f59e57 43%, #c54b5b 100%);
+    linear-gradient(135deg, #173329 0%, #4e8b62 48%, #f7bb3a 100%);
   box-shadow: var(--shadow);
 }
 
@@ -273,10 +274,11 @@ textarea {
 
 .hero-card {
   position: absolute;
+  z-index: 2;
   width: min(290px, calc(100% - 32px));
   padding: 24px;
   border-radius: var(--radius-lg);
-  background: rgba(255, 248, 234, 0.92);
+  background: var(--cream);
   box-shadow: var(--shadow);
 }
 
@@ -313,6 +315,68 @@ textarea {
   bottom: 38px;
 }
 
+.intelligence-orbit {
+  position: absolute;
+  z-index: 1;
+  inset: 92px 54px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 50%;
+}
+
+.intelligence-orbit::before,
+.intelligence-orbit::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.intelligence-orbit::before {
+  width: 156px;
+  height: 156px;
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.intelligence-orbit::after {
+  width: 72px;
+  height: 72px;
+  background: var(--cream);
+  box-shadow: 0 18px 40px rgba(23, 51, 41, 0.18);
+}
+
+.intelligence-orbit span {
+  position: absolute;
+  z-index: 1;
+  display: inline-grid;
+  place-items: center;
+  min-width: 64px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255, 248, 234, 0.9);
+  color: var(--forest);
+  font-weight: 900;
+  box-shadow: 0 12px 24px rgba(23, 51, 41, 0.14);
+}
+
+.intelligence-orbit span:first-child {
+  top: 12px;
+}
+
+.intelligence-orbit span:nth-child(2) {
+  right: 0;
+}
+
+.intelligence-orbit span:nth-child(3) {
+  bottom: 12px;
+}
+
+.intelligence-orbit span:nth-child(4) {
+  left: 0;
+}
+
 .section {
   padding: 40px 24px 56px;
 }
@@ -336,7 +400,8 @@ textarea {
 }
 
 .program-grid,
-.benefit-grid {
+.benefit-grid,
+.intelligence-grid {
   display: grid;
   gap: 22px;
 }
@@ -346,6 +411,7 @@ textarea {
 }
 
 .program-card,
+.intelligence-card,
 .benefit-card,
 .booking-form {
   background: var(--card);
@@ -354,14 +420,89 @@ textarea {
   box-shadow: var(--shadow);
 }
 
+.section-intelligence {
+  padding-top: 28px;
+}
+
+.intelligence-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.intelligence-card {
+  min-height: 250px;
+  padding: 24px;
+  border-radius: var(--radius-md);
+}
+
+.intelligence-card span {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background: rgba(197, 75, 91, 0.12);
+  color: var(--berry);
+  font-weight: 900;
+}
+
+.intelligence-card h3 {
+  margin: 0 0 10px;
+  color: var(--forest);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.intelligence-card p {
+  margin: 0;
+  line-height: 1.7;
+  color: rgba(34, 34, 34, 0.84);
+}
+
 .program-card {
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  padding: 0 24px 24px;
   border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.program-media {
+  position: relative;
+  min-height: 190px;
+  margin: 0 -24px 22px;
+  overflow: hidden;
+  background: var(--forest);
+}
+
+.program-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(23, 51, 41, 0.04) 0%, rgba(23, 51, 41, 0.68) 100%),
+    linear-gradient(90deg, rgba(23, 51, 41, 0.62), rgba(23, 51, 41, 0.08));
+}
+
+.program-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 190px;
+  display: block;
+  object-fit: cover;
+  filter: saturate(1.06) contrast(1.02);
+  transition: transform 220ms ease;
+}
+
+.program-card:hover .program-media img,
+.program-card:focus-within .program-media img {
+  transform: scale(1.04);
 }
 
 .program-top {
+  position: absolute;
+  inset: 18px 18px auto;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -380,15 +521,17 @@ textarea {
 .program-number {
   width: 44px;
   height: 44px;
-  background: rgba(78, 139, 98, 0.14);
-  color: var(--leaf);
+  background: var(--cream);
+  color: var(--forest);
+  box-shadow: 0 10px 24px rgba(23, 51, 41, 0.18);
 }
 
 .program-badge {
   padding: 8px 14px;
-  background: rgba(239, 125, 50, 0.14);
-  color: var(--orange);
+  background: rgba(255, 248, 234, 0.92);
+  color: var(--forest);
   font-size: 0.88rem;
+  box-shadow: 0 10px 24px rgba(23, 51, 41, 0.16);
 }
 
 .program-card h3 {
@@ -560,12 +703,17 @@ textarea {
 @media (max-width: 960px) {
   .hero-content,
   .booking-layout,
-  .benefit-grid {
+  .benefit-grid,
+  .intelligence-grid {
     grid-template-columns: 1fr;
   }
 
   .hero-panel {
     min-height: 380px;
+  }
+
+  .intelligence-card {
+    min-height: auto;
   }
 }
 
@@ -605,5 +753,15 @@ textarea {
   .hero-card-bottom {
     right: 16px;
     bottom: 20px;
+  }
+
+  .intelligence-orbit {
+    inset: 58px 28px;
+  }
+
+  .intelligence-orbit span {
+    min-width: 58px;
+    min-height: 40px;
+    font-size: 0.82rem;
   }
 }
