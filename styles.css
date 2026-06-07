@@ -627,6 +627,68 @@ textarea {
   padding-bottom: 84px;
 }
 
+.founder-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.founder-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.founder-media {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--royal), var(--teal));
+}
+
+.founder-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 220ms ease;
+}
+
+.founder-card:hover .founder-media img,
+.founder-card:focus-within .founder-media img {
+  transform: scale(1.04);
+}
+
+.founder-body {
+  padding: 26px 26px 30px;
+}
+
+.founder-body h3 {
+  margin: 0 0 4px;
+  font-family: "Baloo 2", cursive;
+  font-size: 1.7rem;
+  color: var(--forest);
+}
+
+.founder-role {
+  margin: 0 0 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--royal);
+}
+
+.founder-body p:last-child {
+  margin: 0;
+  line-height: 1.75;
+  color: rgba(29, 36, 64, 0.84);
+}
+
 .booking-layout {
   display: grid;
   grid-template-columns: 0.92fr 1.08fr;
@@ -717,6 +779,7 @@ textarea {
   .hero-content,
   .booking-layout,
   .benefit-grid,
+  .founder-grid,
   .intelligence-grid {
     grid-template-columns: 1fr;
   }
