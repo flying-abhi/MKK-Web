@@ -718,7 +718,7 @@ textarea {
 
 @media (max-width: 760px) {
   .hero {
-    padding-inline: 16px;
+    padding: 18px 16px 40px;
   }
 
   .section,
@@ -726,41 +726,138 @@ textarea {
     padding-inline: 16px;
   }
 
+  .section {
+    padding-top: 32px;
+    padding-bottom: 40px;
+  }
+
   .nav {
     flex-direction: column;
     align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 18px;
   }
 
   .nav-links {
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 14px 18px;
+    width: 100%;
+  }
+
+  .hero-copy {
+    padding: 8px 0;
   }
 
   .hero-copy h1 {
-    font-size: clamp(2.4rem, 12vw, 4rem);
+    font-size: clamp(2.2rem, 11vw, 3.4rem);
+    line-height: 1.04;
+  }
+
+  .lead {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .hero-actions {
+    margin: 22px 0;
+  }
+
+  .program-details {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Reflow the decorative hero panel into a clean stacked layout */
+  .hero-panel {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    border-radius: 28px;
+  }
+
+  .hero-panel::before,
+  .hero-panel::after,
+  .intelligence-orbit {
+    display: none;
+  }
+
+  .hero-card {
+    position: static;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .hero-card strong {
+    font-size: 1.4rem;
+  }
+
+  .program-card h3,
+  .booking-copy h2,
+  .section-heading h2 {
+    text-wrap: balance;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 14px 14px 32px;
+  }
+
+  .section,
+  .footer {
+    padding-inline: 14px;
+  }
+
+  .brand-mark {
+    width: 50px;
+    height: 50px;
+    font-size: 1.15rem;
+  }
+
+  .brand-text strong {
+    font-size: 1.3rem;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2rem, 9.5vw, 2.8rem);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .button {
+    width: 100%;
   }
 
   .program-details {
     grid-template-columns: 1fr;
   }
 
-  .hero-card-top {
-    top: 20px;
-    left: 16px;
+  .program-card {
+    padding: 0 18px 20px;
   }
 
-  .hero-card-bottom {
-    right: 16px;
-    bottom: 20px;
+  .program-media {
+    height: 200px;
+    margin: 0 -18px 20px;
   }
 
-  .intelligence-orbit {
-    inset: 58px 28px;
+  .program-card h3 {
+    font-size: 1.7rem;
   }
 
-  .intelligence-orbit span {
-    min-width: 58px;
-    min-height: 40px;
-    font-size: 0.82rem;
+  .intelligence-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .booking-form {
+    padding: 20px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.8rem, 8vw, 2.4rem);
   }
 }
